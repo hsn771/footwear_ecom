@@ -19,12 +19,6 @@ return new class extends Migration
             $table->string('transaction_id', 100)->nullable(); // gateway transaction id
             $table->timestamp('paid_at')->nullable(); // when payment completed
             $table->timestamps();
-
-            // Foreign key constraint
-            $table->foreign('order_id')
-                  ->references('id')
-                  ->on('orders')
-                  ->onDelete('cascade');
         });
     }
 

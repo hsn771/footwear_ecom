@@ -24,26 +24,26 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();         // order created
             $table->timestamp('updated_at')->nullable();           // updated timestamp
 
-            // Foreign keys
-            $table->foreign('user_id')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');
+            // // Foreign keys
+            // $table->foreign('user_id')
+            //       ->references('id')
+            //       ->on('users')
+            //       ->onDelete('cascade');
 
-            $table->foreign('discount_id')
-                  ->references('id')
-                  ->on('discounts')
-                  ->onDelete('set null');
+            // $table->foreign('discount_id')
+            //       ->references('id')
+            //       ->on('discounts')
+            //       ->onDelete('set null');
 
-            $table->foreign('payment_id')
-                  ->references('id')
-                  ->on('payments')
-                  ->onDelete('set null');
+            // $table->foreign('payment_id')
+            //       ->references('id')
+            //       ->on('payments')
+            //       ->onDelete('set null');
 
-            $table->foreign('shipping_address_id')
-                  ->references('id')
-                  ->on('shipping_addresses')
-                  ->onDelete('cascade');
+            // $table->foreign('shipping_address_id')
+            //       ->references('id')
+            //       ->on('shipping_addresses')
+            //       ->onDelete('cascade');
         });
     }
 

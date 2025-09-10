@@ -22,15 +22,15 @@ return new class extends Migration
             $table->timestamp('updated_at')->nullable();
 
             // Foreign keys
-            $table->foreign('user_id')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');
+            // $table->foreign('user_id')
+            //       ->references('id')
+            //       ->on('users')
+            //       ->onDelete('cascade');
 
-            $table->foreign('product_id')
-                  ->references('id')
-                  ->on('products')
-                  ->onDelete('cascade');
+            // $table->foreign('product_id')
+            //       ->references('id')
+            //       ->on('products')
+            //       ->onDelete('cascade');
 
             // Optional: prevent a user from reviewing the same product twice
             $table->unique(['user_id', 'product_id']);

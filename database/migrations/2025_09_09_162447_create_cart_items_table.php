@@ -22,20 +22,20 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign keys
-            $table->foreign('cart_id')
-                  ->references('id')
-                  ->on('carts')
-                  ->onDelete('cascade');
+            // $table->foreign('cart_id')
+            //       ->references('id')
+            //       ->on('carts')
+            //       ->onDelete('cascade');
 
-            $table->foreign('product_id')
-                  ->references('id')
-                  ->on('products')
-                  ->onDelete('cascade');
+            // $table->foreign('product_id')
+            //       ->references('id')
+            //       ->on('products')
+            //       ->onDelete('cascade');
 
-            $table->foreign('size_id')
-                  ->references('id')
-                  ->on('sizes')
-                  ->onDelete('set null');
+            // $table->foreign('size_id')
+            //       ->references('id')
+            //       ->on('sizes')
+            //       ->onDelete('set null');
         });
     }
 

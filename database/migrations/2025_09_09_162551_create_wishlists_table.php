@@ -19,15 +19,15 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign keys
-            $table->foreign('user_id')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');
+            // $table->foreign('user_id')
+            //       ->references('id')
+            //       ->on('users')
+            //       ->onDelete('cascade');
 
-            $table->foreign('product_id')
-                  ->references('id')
-                  ->on('products')
-                  ->onDelete('cascade');
+            // $table->foreign('product_id')
+            //       ->references('id')
+            //       ->on('products')
+            //       ->onDelete('cascade');
 
             // Prevent duplicate product per user in wishlist
             $table->unique(['user_id', 'product_id']);

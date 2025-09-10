@@ -21,10 +21,10 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign key
-            $table->foreign('order_id')
-                  ->references('id')
-                  ->on('orders')
-                  ->onDelete('cascade');
+            // $table->foreign('order_id')
+            //       ->references('id')
+            //       ->on('orders')
+            //       ->onDelete('cascade');
         });
     }
 

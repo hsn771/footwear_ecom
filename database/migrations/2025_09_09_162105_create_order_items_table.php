@@ -21,21 +21,21 @@ return new class extends Migration
             $table->decimal('price', 10, 2);          // price per unit at purchase time
             $table->timestamps();
 
-            // Foreign keys
-            $table->foreign('order_id')
-                  ->references('id')
-                  ->on('orders')
-                  ->onDelete('cascade');
+            // // Foreign keys
+            // $table->foreign('order_id')
+            //       ->references('id')
+            //       ->on('orders')
+            //       ->onDelete('cascade');
 
-            $table->foreign('product_id')
-                  ->references('id')
-                  ->on('products')
-                  ->onDelete('cascade');
+            // $table->foreign('product_id')
+            //       ->references('id')
+            //       ->on('products')
+            //       ->onDelete('cascade');
 
-            $table->foreign('size_id')
-                  ->references('id')
-                  ->on('sizes')
-                  ->onDelete('set null');
+            // $table->foreign('size_id')
+            //       ->references('id')
+            //       ->on('sizes')
+            //       ->onDelete('set null');
         });
     }
 
