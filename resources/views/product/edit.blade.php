@@ -1,10 +1,12 @@
 @extends('layouts.app_back')
+@section('pageTitle',content: 'Edit Products')
 @section('content')
 
 <div class="body-wrapper-inner">
     <div class="container-fluid">
         <!--  Row 1 -->
         <div class="row">
+          <h3>Update Products</h3>
             <form action="{{route('product.update', $product->id)}}" method="post">
                 @csrf
               <div class="form-group">
@@ -27,7 +29,7 @@
                 <label for="image_url">Image</label>
                 <input type="file" class="form-control" id="image_url" name="image_url" value="{{$product->image_url}}">
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-info mt-3">Submit</button>
             </form>
         </div>
     </div>

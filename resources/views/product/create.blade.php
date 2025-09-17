@@ -1,4 +1,5 @@
 @extends('layouts.app_back')
+@section('pageTitle','Add New Products')
 @section('content')
 
 <div class="body-wrapper-inner">
@@ -35,7 +36,7 @@
                 <label for="image_url">Image</label>
                 <input type="file" class="form-control" id="image_url" name="image_url">
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-info mt-3">Submit</button>
             </form>
         </div>
     </div>

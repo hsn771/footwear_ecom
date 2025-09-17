@@ -246,6 +246,10 @@
       @yield('content')
     </div>
   </div>
+      <div class="py-6 px-6 text-center">
+          <p class="mb-0 fs-4">Design and Developed by <a href="#"
+              class="pe-1 text-primary text-decoration-underline">Hasanur Rashid</a></p>
+      </div>
   <script src="{{asset('admin_assets/libs/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{asset('admin_assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('admin_assets/js/sidebarmenu.js')}}"></script>
