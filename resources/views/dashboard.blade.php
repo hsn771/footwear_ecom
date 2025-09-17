@@ -1,4 +1,5 @@
 @extends('layouts.app_back')
+@section('pageTitle','Dashboard')
 @section('content')
 
 <div class="body-wrapper-inner">
