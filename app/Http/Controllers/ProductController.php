@@ -55,7 +55,8 @@ class ProductController extends Controller
      */
     public function edit(product $product)
     {
-        return view('product.edit', compact('product'));
+        $category=category::all();
+        return view('product.edit',compact('category', 'product'));
     }
 
     /**
@@ -64,7 +65,22 @@ class ProductController extends Controller
     public function update(Request $request, product $product)
     {
         $product->update($request->all());
-        return redirect()->route('product.index');
+        // return redirect()->route('product.index');
+
+        if ($request->hasFile('image_url')) {
+       
+        if ($product->image_url && file_exists(public_path('uploads/'.$product->image_url))) {
+            unlink(public_path('uploads/'.$product->image_url));
+        }
+        $fileName = time().'_'.$request->file('image_url')->getClientOriginalName();
+        $request->file('image_url')->move(public_path('uploads'), $fileName);
+
+        $product->image_url = $fileName;
+    }
+
+    $product->save();
+
+    return redirect()->route('product.index');
     }
 
     /**

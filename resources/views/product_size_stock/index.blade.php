@@ -1,32 +1,36 @@
 @extends('layouts.app_back')
-@section('pageTitle','Categories')
+@section('pageTitle','Sizes Stocks')
 @section('content')
-
+ 
 <div class="body-wrapper-inner">
     <div class="container-fluid">
         <!--  Row 1 -->
         <div class="row">
-            <a class="btn btn-info mb-3" href="{{ route('category.create') }}">Add New</a>
+            <a class="btn btn-info" href="{{route('product_size_stock.create')}}">Add New</a>
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Action</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Stock Quantity</th>
+                    <th scope="col">Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @forelse($data as $i=>$d)
-                        <tr>
-                            <td>{{ ++$i }}</td>
-                            <td>{{ $d->name }}</td>
-                            <td>
-                                            <a class="btn btn-info" href="{{route('product.edit',$d->id)}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <tbody>
+                            @forelse($data as $i=>$d)
+                                    <tr>
+                                        <td>{{++$i}}</td>
+                                        <td>{{$d->products?->name}}</td>
+                                        <td>{{$d->sizes?->size_label}}</td>
+                                        <td>{{$d->stock_quantity}}</td>
+                                        <td>
+                                            <a class="btn btn-info" href="{{route('product_size_stock.edit',$d->id)}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                                                 </svg>
                                             </a>
-                                        <form method="POST" action="{{ route('product.destroy', $d->id) }}" style="display:inline;">
+                                        <form method="POST" action="{{ route('product_size_stock.destroy', $d->id) }}" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">
@@ -37,18 +41,18 @@
                                         </form>
 
                                         </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="5">No Data found</td>
-                        </tr>
-                    @endforelse
-                </tbody>
+                                    </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="5">No Data found</td>
+                                        </tr>
+                            @endforelse
+                    </tbody>
             </table>
-
-            <!-- Pagination -->
-            {{ $data->links() }}
         </div>
     </div>
 </div>
+
+
+
 @endsection

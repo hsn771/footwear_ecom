@@ -12,7 +12,8 @@ class SizeController extends Controller
      */
     public function index()
     {
-        //
+        $data=size::all();
+        return view('size.index', compact('data'));
     }
 
     /**
@@ -20,7 +21,7 @@ class SizeController extends Controller
      */
     public function create()
     {
-        //
+        return view('size.create');
     }
 
     /**
@@ -28,7 +29,8 @@ class SizeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         size::create($request->all());
+        return redirect()->route('size.index');
     }
 
     /**
@@ -44,7 +46,7 @@ class SizeController extends Controller
      */
     public function edit(size $size)
     {
-        //
+        return view('size.edit', compact('size'));
     }
 
     /**
@@ -52,7 +54,8 @@ class SizeController extends Controller
      */
     public function update(Request $request, size $size)
     {
-        //
+        $size->update($request->all());
+        return redirect()->route('size.index');
     }
 
     /**
@@ -60,6 +63,7 @@ class SizeController extends Controller
      */
     public function destroy(size $size)
     {
-        //
+        $size->delete();
+        return redirect()->back();
     }
 }

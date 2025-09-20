@@ -28,7 +28,10 @@
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
-            <img src="{{asset('admin_assets/images/logos/logo.svg')}}" alt="" />
+            {{-- <img src="{{asset('admin_assets/images/logos/logo.svg')}}" alt="" /> --}}
+            <div class="text-primary-emphasis">
+              <h2><b>Footwear</b></h2>
+            </div>
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-6"></i>
@@ -75,101 +78,100 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link justify-content-between has-arrow" href="javascript:void(0)" aria-expanded="false">
+              <a class="sidebar-link justify-content-between"  
+                href="{{route('size.index')}}" aria-expanded="false">
                 <div class="d-flex align-items-center gap-3">
                   <span class="d-flex">
-                    <i class="ti ti-layout-grid"></i>
+                    <i class="ti ti-shopping-cart"></i>
                   </span>
-                  <span class="hide-menu">Front Pages</span>
+                  <span class="hide-menu">Sizes</span>
                 </div>
                 
               </a>
-              <ul aria-expanded="false" class="collapse first-level">
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Homepage</span>
-                    </div>
-                    
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">About Us</span>
-                    </div>
-                    
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Blog</span>
-                    </div>
-                    
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Blog Details</span>
-                    </div>
-                    
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Contact Us</span>
-                    </div>
-                    
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Portfolio</span>
-                    </div>
-                    
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Pricing</span>
-                    </div>
-                    
-                  </a>
-                </li>
-              </ul>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link justify-content-between"  
+                href="{{route('product_size_stock.index')}}" aria-expanded="false">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="d-flex">
+                    <i class="ti ti-shopping-cart"></i>
+                  </span>
+                  <span class="hide-menu">Product Size Stock</span>
+                </div>
+                
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link justify-content-between"  
+                href="#" aria-expanded="false">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="d-flex">
+                    <i class="ti ti-shopping-cart"></i>
+                  </span>
+                  <span class="hide-menu">Orders</span>
+                </div>
+                
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link justify-content-between"  
+                href="#" aria-expanded="false">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="d-flex">
+                    <i class="ti ti-shopping-cart"></i>
+                  </span>
+                  <span class="hide-menu">Discounts</span>
+                </div>
+                
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link justify-content-between"  
+                href="#" aria-expanded="false">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="d-flex">
+                    <i class="ti ti-shopping-cart"></i>
+                  </span>
+                  <span class="hide-menu">Payments</span>
+                </div>
+                
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link justify-content-between"  
+                href="#" aria-expanded="false">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="d-flex">
+                    <i class="ti ti-shopping-cart"></i>
+                  </span>
+                  <span class="hide-menu">Wishlists</span>
+                </div>
+                
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link justify-content-between"  
+                href="#" aria-expanded="false">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="d-flex">
+                    <i class="ti ti-briefcase"></i>
+                  </span>
+                  <span class="hide-menu">Returns</span>
+                </div>
+                
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link justify-content-between"  
+                href="#" aria-expanded="false">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="d-flex">
+                    <i class="ti ti-shopping-cart"></i>
+                  </span>
+                  <span class="hide-menu">Reviews</span>
+                </div>
+                
+              </a>
             </li>
           </ul>
         </nav>

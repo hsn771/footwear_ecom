@@ -8,6 +8,7 @@
             <h3>Update Category</h3>
                 <form action="{{route('category.update', $category->id)}}" method="post">
                     @csrf
+                    @method('PATCH')
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{$category->name}}">

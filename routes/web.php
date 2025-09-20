@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SizeController;
+use App\Http\Controllers\ProductSizeStockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +37,7 @@ Route::middleware('auth:web')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);
+    Route::resource('size', SizeController::class);
+    Route::resource('product_size_stock', ProductSizeStockController::class);
 
 });
