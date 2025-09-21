@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use  App\Http\Controllers\FrontendController as front;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SizeController;
@@ -17,13 +18,16 @@ use App\Http\Controllers\ProductSizeStockController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('welcome');
 
-Route::get('/man', function () {
-    return view('man');
-})->name('man');
+// Route::get('/man', function () {
+//     return view('man');
+// })->name('man');
+
+Route::get('/',[front::class,'welcome'])->name ('welcome');
+Route::get('man',[front::class,'man'])->name ('man');
 
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
