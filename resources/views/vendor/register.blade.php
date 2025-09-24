@@ -35,66 +35,73 @@
                             <label for="email">Email Address</label>
                             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter your email address" required>
                         </div>
-                        <div class="form-group">
-                            <label for="district_id" class="form-label">District</label>
-                            <select name="district_id" class="form-select" id="district">
-                                <option selected>Select your district</option>
-                                @foreach($districts as $district)
-                                    <option class="dist dist{{$district->division_id}}" value="{{ $district->id }}">{{ $district->name }}</option>
-                                @endforeach
-                            </select>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="district_id" class="form-label">District</label>
+                                    <select name="district_id" class="form-control" id="district">
+                                        <option selected>Select your district</option>
+                                        @foreach($districts as $district)
+                                            <option class="dist dist{{$district->division_id}}" value="{{ $district->id }}">{{ $district->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="division_id" class="form-label">Division</label>
+                                    <select name="division_id" class="form-control" id="division" onchange="fetchDistricts(this.value)">
+                                        <option selected>Select your division</option>
+                                        @foreach($divisions as $division)
+                                            <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="division_id" class="form-label">Division</label>
-                            <select name="division_id" class="form-select" id="division" onchange="fetchDistricts(this.value)">
-                                <option selected>Select your division</option>
-                                @foreach($divisions as $division)
-                                    <option value="{{ $division->id }}">{{ $division->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+
                          <div class="form-group">
                             <label for="address">Address</label>
                             <input type="text" class="form-control" id="address" name="address" aria-describedby="emailHelp" placeholder="Address">
                         </div>
                          <div class="form-group">
                                 <label for="username">Username</label>
-                                <input 
-                                    type="text" 
-                                    class="form-control" 
-                                    id="username" 
-                                    name="username" 
-                                    placeholder="Enter username" 
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="username"
+                                    name="username"
+                                    placeholder="Enter username"
                                     required>
                          </div>
 
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input 
-                                    type="password" 
-                                    class="form-control" 
-                                    id="password" 
-                                    name="password" 
-                                    placeholder="Enter password" 
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Enter password"
                                     required>
                             </div>
 
                             <div class="form-group">
                                 <label for="password_confirmation">Confirm Password</label>
-                                <input 
-                                    type="password" 
-                                    class="form-control" 
-                                    id="password_confirmation" 
-                                    name="password_confirmation" 
-                                    placeholder="Confirm password" 
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="password_confirmation"
+                                    name="password_confirmation"
+                                    placeholder="Confirm password"
                                     required>
                             </div>
 
                         <button type="submit" class="btn btn-primary">Register</button>
                     </form>
-                   
+
                 </div>
-               
+
 
             </div>
         </div>

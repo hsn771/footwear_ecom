@@ -8,7 +8,7 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="{{asset ('assets/css/animate.css') }}">
 	<!-- Icomoon Icon Fonts-->
@@ -27,7 +27,7 @@
 	<!-- Owl Carousel -->
 	<link rel="stylesheet" href="{{asset ('assets/css/owl.carousel.min.css') }}">
 	<link rel="stylesheet" href="{{asset ('assets/css/owl.theme.default.min.css') }}">
-	
+
 	<!-- Date Picker -->
 	<link rel="stylesheet" href="{{asset ('assets/css/bootstrap-datepicker.css') }}">
 	<!-- Flaticons  -->
@@ -40,7 +40,7 @@
 
 	</head>
 	<body>
-		
+
 	<div class="colorlib-loader"></div>
 
 	<!-- <div id="page"> -->
@@ -79,7 +79,7 @@
 								<li><a href="contact.html">Contact</a></li>
 								<li class="cart"><a href="{{route('cart.view')}}"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
 								<li class="cart"><a href=""><i class="icon-heart"></i> Wishlist [0]</a></li>
-								<li class="cart"><a href="">Vendor Register</a></li>
+								<li class="cart"><a href="{{route('vendor.register')}}">Vendor Register</a></li>
 							</ul>
 						</div>
 					</div>
@@ -206,7 +206,7 @@
 						<p>
 							<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span> 
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
 							<span class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a> , <a href="http://pexels.com/" target="_blank">Pexels.com</a></span>
 						</p>
 					</div>
@@ -218,7 +218,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
-	
+
 	<!-- jQuery -->
 	<script src="{{asset ('assets/js/jquery.min.js') }}"></script>
    <!-- popper -->

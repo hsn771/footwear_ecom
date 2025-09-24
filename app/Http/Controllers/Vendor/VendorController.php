@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 class VendorController extends Controller
 {
     public function register(){
-        return view('vendor.register');
+        $divisions = Division::all();
+        $districts = District::all();
+        return view('vendor.register', compact('divisions', 'districts'));
     }
 }
