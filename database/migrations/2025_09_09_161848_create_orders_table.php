@@ -14,12 +14,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id(); // INT PRIMARY KEY AUTO_INCREMENT
 
-            $table->unsignedBigInteger('user_id');                // who placed the order
-            $table->decimal('total_amount', 10, 2);               // total order amount
-            $table->unsignedBigInteger('discount_id')->nullable(); // applied discount
-            $table->decimal('discount_amount', 10, 2)->default(0); // discount value
-            $table->unsignedBigInteger('payment_id')->nullable();  // payment reference
-            $table->unsignedBigInteger('shipping_address_id');     // shipping address
+            $table->unsignedBigInteger('user_id');
+            $table->decimal('discount_amount', 10, 2)->default(0);
             $table->string('status', 50)->default('pending');      // order status
             $table->timestamp('created_at')->useCurrent();         // order created
             $table->timestamp('updated_at')->nullable();           // updated timestamp

@@ -4,6 +4,7 @@
 	<title>Footwear - Free Bootstrap 4 Template by Colorlib</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
@@ -34,6 +35,8 @@
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="{{asset ('assets/css/style.css') }}">
+
+	@stack('styles')
 
 	</head>
 	<body>
@@ -74,8 +77,9 @@
 								<li><a href="women.html">Women</a></li>
 								<li><a href="about.html">About</a></li>
 								<li><a href="contact.html">Contact</a></li>
-								<li class="cart"><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
+								<li class="cart"><a href="{{route('cart.view')}}"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
 								<li class="cart"><a href=""><i class="icon-heart"></i> Wishlist [0]</a></li>
+								<li class="cart"><a href="">Vendor Register</a></li>
 							</ul>
 						</div>
 					</div>
@@ -239,6 +243,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!-- Main -->
 	<script src="{{asset ('assets/js/main.js') }}"></script>
 
+	@stack('scripts')
+
 	</body>
 </html>
+
+
 
