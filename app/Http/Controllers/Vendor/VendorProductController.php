@@ -14,7 +14,8 @@ class VendorProductController extends Controller
      */
     public function index()
     {
-        $data=product::all();
+        $vendorId = auth()->guard('vendor')->id();
+        $data=product::where('vendor_id',$vendorId)->get();
         return view('vendor.product.index', compact('data'));
     }
 
@@ -24,7 +25,7 @@ class VendorProductController extends Controller
     public function create()
     {
         $category=category::all();
-        return view('product.create',compact('category'));
+        return view('vendor.product.create',compact('category'));
     }
 
     /**
@@ -34,13 +35,14 @@ class VendorProductController extends Controller
     {
         $input=$request->all();
         if($request->hasFile('image_url')){
-            $fileName = time().'.'.$request->image_url->extension();  
+            $fileName = time().'.'.$request->image_url->extension();
             $request->image_url->move(public_path('uploads'), $fileName);
             $input['image_url']=$fileName;
         }
+        $input['vendor_id'] = auth()->guard('vendor')->id();
 
         product::create($input);
-        return redirect()->route('product.index');
+        return redirect()->route('vendor.product.index');
     }
 
     /**
@@ -57,7 +59,7 @@ class VendorProductController extends Controller
     public function edit(product $product)
     {
         $category=category::all();
-        return view('product.edit',compact('category', 'product'));
+        return view('vendor.product.edit',compact('category', 'product'));
     }
 
     /**
@@ -69,7 +71,7 @@ class VendorProductController extends Controller
         // return redirect()->route('product.index');
 
         if ($request->hasFile('image_url')) {
-       
+
         if ($product->image_url && file_exists(public_path('uploads/'.$product->image_url))) {
             unlink(public_path('uploads/'.$product->image_url));
         }
@@ -81,7 +83,7 @@ class VendorProductController extends Controller
 
     $product->save();
 
-    return redirect()->route('product.index');
+    return redirect()->route('vendor.product.index');
     }
 
     /**

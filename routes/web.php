@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\FrontendController as front;
+use App\Http\Controllers\DashboardController as dash;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SizeController;
@@ -9,7 +10,10 @@ use App\Http\Controllers\ProductSizeStockController;
 use  App\Http\Controllers\CouponController;
 use  App\Http\Controllers\CartController;
 use  App\Http\Controllers\CheckoutController;
+// vendor
 use  App\Http\Controllers\Vendor\VendorController;
+use App\Http\Controllers\Vendor\DashboardController;
+use App\Http\Controllers\Vendor\VendorProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +53,7 @@ Route::post('checkout/place_order',[CheckoutController::class,'placeOrder'])->na
 Auth::routes();
 Route::middleware('auth:web')->group(function () {
 
-    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [dash::class, 'index'])->name('dashboard');
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);
     Route::resource('size', SizeController::class);
@@ -59,5 +63,13 @@ Route::middleware('auth:web')->group(function () {
 });
 
 
-// all vendor 
+// all vendor
 Route::get('vendor/register',[VendorController::class,'register'])->name('vendor.register');
+Route::post('vendor/register',[VendorController::class,'store'])->name('vendor.store');
+Route::get('vendor/login',[VendorController::class,'login'])->name('vendor.login');
+Route::post('vendor/login',[VendorController::class,'checkLogin'])->name('vendor.login');
+
+Route::middleware('auth:vendor')->group(function () {
+    Route::get('vendor/dashboard',[DashboardController::class,'index'])->name('vendor.dashboard');
+    Route::resource('vendor/product', VendorProductController::class, ['as'=>'vendor']);
+});
