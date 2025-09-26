@@ -36,6 +36,7 @@ use App\Http\Controllers\Vendor\VendorProductController;
 
 Route::get('/',[front::class,'welcome'])->name ('welcome');
 Route::get('man',[front::class,'man'])->name ('man');
+Route::get('productdescription',[front::class,'productdescription'])->name ('productdescription');
 
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::get('cart',[CartController::class,'viewCart'])->name('cart.view');
