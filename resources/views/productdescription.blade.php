@@ -32,7 +32,6 @@
 <body>
 
 <div class="container my-5">
-      @forelse ($products as $product)
         <div class="row">
           
                   <!-- Product Image -->
@@ -109,9 +108,6 @@
             </div>
           </div>
         </div>
-        @empty
-
-      @endforelse
 </div>
 
 <!-- Bootstrap 4 JS + FontAwesome -->

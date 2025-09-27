@@ -20,14 +20,21 @@
                         </div>
                         <div class="form-group">
                             <label for="owner_contact">Contact Number</label>
-                            <input type="number" class="form-control" id="owner_contact" name="owner_contact" aria-describedby="emailHelp" placeholder="Contact Number">
+                            <input type="text" class="form-control" id="owner_contact" name="owner_contact" aria-describedby="emailHelp" placeholder="Contact Number">
                             @error('owner_contact')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="store_name">Store Name</label>
+                            <input type="text" class="form-control" id="store_name" name="store_name" aria-describedby="emailHelp" placeholder="Store Name">
+                            @error('store_name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="store_contact">Store Contact Number</label>
-                            <input type="number" class="form-control" id="store_contact" name="store_contact" aria-describedby="emailHelp" placeholder="Store Contact Number">
+                            <input type="text" class="form-control" id="store_contact" name="store_contact" aria-describedby="emailHelp" placeholder="Store Contact Number">
                             @error('store_contact')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

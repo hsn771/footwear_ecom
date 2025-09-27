@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Vendor;
 
 use App\Models\order;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class OrderController extends Controller
+class VendorOrderController extends Controller
 {
     /**
      * Display a listing of the resource.

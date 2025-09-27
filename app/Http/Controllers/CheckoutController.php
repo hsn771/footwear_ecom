@@ -85,8 +85,9 @@ class CheckoutController extends Controller
                 $orderItem=new OrderItem();
                 $orderItem->order_id=$order->id;
                 $orderItem->product_id=$id;
+                $orderItem->vendor_id=$item['vendor_id'];
                 $orderItem->quantity=$item['quantity'];
-                $orderItem->unit_price=$item['price'];
+                $orderItem->price=$item['price'];
                 $orderItem->line_total=$item['price'] * $item['quantity'];
                 $orderItem->save();
             }
@@ -97,7 +98,7 @@ class CheckoutController extends Controller
         Session::forget('cart');
         Session::forget('coupon');
 
-        return redirect()->route('home')->with('success', 'Order placed successfully!');
+        return redirect()->route('welcome')->with('success', 'Order placed successfully!');
         } catch (\Throwable $th) {
            // dd($th);
             throw $th;

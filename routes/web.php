@@ -8,12 +8,14 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\ProductSizeStockController;
 use  App\Http\Controllers\CouponController;
+use App\Http\Controllers\OrderController;
 use  App\Http\Controllers\CartController;
 use  App\Http\Controllers\CheckoutController;
 // vendor
 use  App\Http\Controllers\Vendor\VendorController;
 use App\Http\Controllers\Vendor\DashboardController;
 use App\Http\Controllers\Vendor\VendorProductController;
+use App\Http\Controllers\Vendor\VendorOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +38,7 @@ use App\Http\Controllers\Vendor\VendorProductController;
 
 Route::get('/',[front::class,'welcome'])->name ('welcome');
 Route::get('man',[front::class,'man'])->name ('man');
-Route::get('productdescription',[front::class,'productdescription'])->name ('productdescription');
+Route::get('productdescription/{id}',[front::class,'productdescription'])->name ('productdescription');
 
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::get('cart',[CartController::class,'viewCart'])->name('cart.view');
@@ -53,13 +55,13 @@ Route::post('checkout/place_order',[CheckoutController::class,'placeOrder'])->na
 // })->name('dashboard');
 Auth::routes();
 Route::middleware('auth:web')->group(function () {
-
     Route::get('/dashboard', [dash::class, 'index'])->name('dashboard');
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);
     Route::resource('size', SizeController::class);
     Route::resource('product_size_stock', ProductSizeStockController::class);
     Route::resource('coupon', CouponController::class);
+    Route::resource('order', OrderController::class);
 
 });
 
@@ -73,4 +75,5 @@ Route::post('vendor/login',[VendorController::class,'checkLogin'])->name('vendor
 Route::middleware('auth:vendor')->group(function () {
     Route::get('vendor/dashboard',[DashboardController::class,'index'])->name('vendor.dashboard');
     Route::resource('vendor/product', VendorProductController::class, ['as'=>'vendor']);
+    Route::resource('vendor/order', VendororderController::class, ['as'=>'vendor']);
 });

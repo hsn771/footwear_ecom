@@ -14,8 +14,8 @@ class FrontendController extends Controller
     function man() {
         return view ('man');
     }
-    function productdescription() {
-        $products = \App\Models\Product::all();
-        return view ('productdescription', compact('products'));
+    function productdescription($id) {
+        $product = \App\Models\Product::find($id);
+        return view ('productdescription', compact('product'));
     }
 }

@@ -32,7 +32,7 @@
                             <tr>
                                 <td>{{ $item['name'] }}</td>
                                 <td>BDT{{ number_format($item['price'], 2) }}</td>
-                                <td>
+                                <td class="d-flex">
                                     <button type="button" class="btn btn-secondary btn-sm" onclick="updateCart({{$id}},'decrease')">-</button>
                                         <input type="number" name="" id="" value="{{ $item['quantity'] }}" style="width: 40px; text-align: center;" readonly>
                                     <button type="button" class="btn btn-secondary btn-sm" onclick="updateCart({{$id}},'increase')">+</button>

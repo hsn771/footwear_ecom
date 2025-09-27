@@ -52,6 +52,7 @@ class VendorController extends Controller
     }
 
     public function checkLogin(Request $request){
+
         $credentials = $request->validate([
             'username' => 'required|string',
             'password' => 'required|string'
