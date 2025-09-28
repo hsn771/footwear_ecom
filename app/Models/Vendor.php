@@ -33,4 +33,6 @@ class Vendor extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+   
 }

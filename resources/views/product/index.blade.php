@@ -6,6 +6,7 @@
     <div class="container-fluid">
         <!--  Row 1 -->
         <div class="row">
+            <h2>Products</h2>
             <a class="btn btn-info" href="{{route('product.create')}}">Add New</a>
             <table class="table">
                 <thead>

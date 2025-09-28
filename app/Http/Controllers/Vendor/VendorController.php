@@ -64,4 +64,5 @@ class VendorController extends Controller
 
         return back()->withErrors(['username' => 'Invalid credentials'])->withInput();
     }
+
 }

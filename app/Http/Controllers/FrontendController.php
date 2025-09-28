@@ -9,6 +9,7 @@ class FrontendController extends Controller
     function welcome() {
         $products = \App\Models\Product::all();
         return view ('welcome', compact('products'));
+
     }
 
     function man() {
@@ -18,4 +19,6 @@ class FrontendController extends Controller
         $product = \App\Models\Product::find($id);
         return view ('productdescription', compact('product'));
     }
+
+     
 }

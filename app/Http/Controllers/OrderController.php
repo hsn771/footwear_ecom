@@ -38,7 +38,7 @@ class OrderController extends Controller
      */
     public function show(order $order)
     {
-        //
+         return view('order.show',compact('order'));
     }
 
     /**

@@ -50,6 +50,7 @@ Route::get('checkout',[CheckoutController::class,'checkout'])->name('checkout');
 Route::post('checkout/place_order',[CheckoutController::class,'placeOrder'])->name('checkout.place_order');
 
 
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->name('dashboard');
