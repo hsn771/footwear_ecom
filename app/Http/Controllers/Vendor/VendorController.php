@@ -65,4 +65,9 @@ class VendorController extends Controller
         return back()->withErrors(['username' => 'Invalid credentials'])->withInput();
     }
 
+    public function show($id) {
+    $vendors =Vendor::findOrFail($id);
+    return view('vendor.show', compact('vendors'));
+}
+
 }

@@ -72,6 +72,7 @@ Route::get('vendor/register',[VendorController::class,'register'])->name('vendor
 Route::post('vendor/register',[VendorController::class,'store'])->name('vendor.store');
 Route::get('vendor/login',[VendorController::class,'login'])->name('vendor.login');
 Route::post('vendor/login',[VendorController::class,'checkLogin'])->name('vendor.login');
+Route::get('/vendor/{id}', [VendorController::class, 'show'])->name('vendor.show');
 
 Route::middleware('auth:vendor')->group(function () {
     Route::get('vendor/dashboard',[DashboardController::class,'index'])->name('vendor.dashboard');

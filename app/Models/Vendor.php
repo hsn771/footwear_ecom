@@ -34,5 +34,8 @@ class Vendor extends Authenticatable
         'password'
     ];
 
-   
+   public function products()
+{
+    return $this->hasMany(Product::class, 'vendor_id'); 
+}
 }

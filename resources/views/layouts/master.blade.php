@@ -75,7 +75,7 @@
 								<li class="has-dropdown">
 									<a href="#">Shops</a>
 									<ul class="dropdown">
-										<li><a href="#">Adidas</a></li>
+										<li><a href="{{ route('vendor.show', 1) }}">Adidas</a></li>
 										<li><a href="cart.html">Nike</a></li>
 										<li><a href="checkout.html">Bata</a></li>
 									</ul>
@@ -125,19 +125,19 @@
 				</div>
 				<div class="row">
 					<div class="col partner-col text-center">
-						<img src="assets/images/brand-1.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+						<img src="{{asset('assets/images/brand-1.jpg')}}" class="img-fluid" alt="Free html4 bootstrap 4 template">
 					</div>
 					<div class="col partner-col text-center">
-						<img src="assets/images/brand-2.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+						<img src="{{asset('assets/images/brand-2.jpg')}}" class="img-fluid" alt="Free html4 bootstrap 4 template">
 					</div>
 					<div class="col partner-col text-center">
-						<img src="assets/images/brand-3.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+						<img src="{{asset('assets/images/brand-3.jpg')}}" class="img-fluid" alt="Free html4 bootstrap 4 template">
 					</div>
 					<div class="col partner-col text-center">
-						<img src="assets/images/brand-4.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+						<img src="{{asset('assets/images/brand-4.jpg')}}" class="img-fluid" alt="Free html4 bootstrap 4 template">
 					</div>
 					<div class="col partner-col text-center">
-						<img src="assets/images/brand-5.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+						<img src="{{asset('assets/images/brand-5.jpg')}}" class="img-fluid" alt="Free html4 bootstrap 4 template">
 					</div>
 				</div>
 			</div>
