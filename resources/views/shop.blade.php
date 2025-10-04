@@ -34,16 +34,17 @@
         <h2 class="fw-bold position-relative">
             <span class="position-relative z-1">Featured Products</span>
         </h2>
-        <div class="dropdown">
+       <div class="dropdown">
             <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                 <i class="fas fa-sort me-1"></i> Sort By
             </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
-                <li><a class="dropdown-item" href="#">Price: High to Low</a></li>
-                <li><a class="dropdown-item" href="#">Newest First</a></li>
+            <ul class="dropdown-menu" id="sortMenu">
+                <li><a class="dropdown-item" href="javascript:void(0)" data-sort="low_to_high">Price: Low to High</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0)" data-sort="high_to_low">Price: High to Low</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0)" data-sort="newest">Newest First</a></li>
             </ul>
         </div>
+
     </div>
 
     <div class="row g-4">

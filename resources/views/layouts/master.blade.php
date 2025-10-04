@@ -75,9 +75,11 @@
 								<li class="has-dropdown">
 									<a href="#">Shops</a>
 									<ul class="dropdown">
-										<li><a href="{{ route('vendor.show', 1) }}">Adidas</a></li>
-										<li><a href="cart.html">Nike</a></li>
-										<li><a href="checkout.html">Bata</a></li>
+										@forelse(App\Models\Vendor::get() as $vendor)
+										<li><a href="{{ route('shop', $vendor->id) }}">{{$vendor->store_name}}</a></li>
+										@empty
+											
+										@endforelse
 									</ul>
 								</li>
 								<li><a href="about.html">About</a></li>

@@ -38,6 +38,7 @@ use App\Http\Controllers\Vendor\VendorOrderController;
 
 Route::get('/',[front::class,'welcome'])->name ('welcome');
 Route::get('man',[front::class,'man'])->name ('man');
+Route::get('/shop/{id}', [front::class, 'shop'])->name('shop');
 Route::get('productdescription/{id}',[front::class,'productdescription'])->name ('productdescription');
 
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
@@ -72,7 +73,6 @@ Route::get('vendor/register',[VendorController::class,'register'])->name('vendor
 Route::post('vendor/register',[VendorController::class,'store'])->name('vendor.store');
 Route::get('vendor/login',[VendorController::class,'login'])->name('vendor.login');
 Route::post('vendor/login',[VendorController::class,'checkLogin'])->name('vendor.login');
-Route::get('/vendor/{id}', [VendorController::class, 'show'])->name('vendor.show');
 
 Route::middleware('auth:vendor')->group(function () {
     Route::get('vendor/dashboard',[DashboardController::class,'index'])->name('vendor.dashboard');
