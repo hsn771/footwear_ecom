@@ -59,15 +59,23 @@ class VendorController extends Controller
         ]);
 
         if(auth()->guard('vendor')->attempt($credentials)){
-            return redirect()->intended(route('vendor.dashboard'));
+            return redirect()->route('vendor.dashboard');
         }
 
         return back()->withErrors(['username' => 'Invalid credentials'])->withInput();
     }
 
     public function show($id) {
-    $vendors =Vendor::findOrFail($id);
-    return view('vendor.show', compact('vendors'));
-}
+        $vendors =Vendor::findOrFail($id);
+        return view('vendor.show', compact('vendors'));
+    }
+
+    public function logout(){
+        auth()->guard('vendor')->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect()->route('vendor.login');
+    }
 
 }

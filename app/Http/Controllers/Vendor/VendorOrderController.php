@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Vendor;
 
 use App\Models\order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,8 +14,11 @@ class VendorOrderController extends Controller
      */
     public function index()
     {
-        $data=Order::get();
-        return view('order.index',compact('data'));
+        $vendorId = auth()->guard('vendor')->id();
+        $data = Order::whereHas('orderItems', function ($query) use ($vendorId) {
+                    $query->where('vendor_id', $vendorId);
+                })->get();
+        return view('vendor.order.index',compact('data'));
     }
 
     /**
@@ -30,8 +34,7 @@ class VendorOrderController extends Controller
      */
     public function store(Request $request)
     {
-       Order::create($request->all());
-       return redirect()->route('order.index');
+       //
     }
 
     /**
@@ -47,7 +50,7 @@ class VendorOrderController extends Controller
      */
     public function edit(order $order)
     {
-        //
+        return view('vendor.order.edit',compact('order'));
     }
 
     /**
@@ -55,7 +58,12 @@ class VendorOrderController extends Controller
      */
     public function update(Request $request, order $order)
     {
-        //
+        if($request->status){
+            foreach($request->status as $item=>$status){
+                OrderItem::find($item)->update(['status'=>$status]);
+            }
+        }
+        return redirect()->route('vendor.order.index');
     }
 
     /**

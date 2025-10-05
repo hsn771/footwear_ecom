@@ -20,7 +20,8 @@
                     <th scope="col">Notes</th>
                     <th scope="col">Address</th>
                     <th scope="col">User</th>
-                    <th scope="col">Discount Amount</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -37,6 +38,7 @@
                                     <td>{{$d->address}}</td>
                                     <td>{{$d->user_id}}</td>
                                     <td>{{$d->discount_amount}}</td>
+                                    <td>{{$d->status}}</td>
                                     <td>
                                          <a class="btn btn-success" href="{{route('order.show',$d->id)}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">

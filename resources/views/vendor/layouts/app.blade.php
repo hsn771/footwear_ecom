@@ -207,13 +207,10 @@
                       <i class="ti ti-list-check fs-6"></i>
                       <p class="mb-0 fs-3">My Task</p>
                     </a>
-                    <a href="{{ route('logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
+                    <a href="{{ route('vendor.logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block" >
                           {{ __('Logout') }}
                     </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                      @csrf
-                    </form>
+
                   </div>
                 </div>
               </li>

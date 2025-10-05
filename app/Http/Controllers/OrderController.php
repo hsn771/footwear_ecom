@@ -38,7 +38,7 @@ class OrderController extends Controller
      */
     public function show(order $order)
     {
-         return view('order.show',compact('order'));
+        return view('order.show',compact('order'));
     }
 
     /**
@@ -46,7 +46,7 @@ class OrderController extends Controller
      */
     public function edit(order $order)
     {
-        //
+        return view('order.edit',compact('order'));
     }
 
     /**
@@ -54,7 +54,16 @@ class OrderController extends Controller
      */
     public function update(Request $request, order $order)
     {
-        //
+        try {
+            // You may want to whitelist updatable fields instead of all()
+            $order->update($request->all());
+            return redirect()->route('order.index')->with('success', 'Order updated successfully.');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+            // Log the exception if you have logging configured
+            // Log::error($e->getMessage());
+            return redirect()->back()->with('error', 'Failed to update order: ' . $e->getMessage());
+        }
     }
 
     /**

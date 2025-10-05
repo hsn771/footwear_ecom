@@ -57,7 +57,7 @@ Route::post('checkout/place_order',[CheckoutController::class,'placeOrder'])->na
 // })->name('dashboard');
 Auth::routes();
 Route::middleware('auth:web')->group(function () {
-    Route::get('/dashboard', [dash::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [dash::class, 'index'])->name('dashboard');
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);
     Route::resource('size', SizeController::class);
@@ -73,7 +73,7 @@ Route::get('vendor/register',[VendorController::class,'register'])->name('vendor
 Route::post('vendor/register',[VendorController::class,'store'])->name('vendor.store');
 Route::get('vendor/login',[VendorController::class,'login'])->name('vendor.login');
 Route::post('vendor/login',[VendorController::class,'checkLogin'])->name('vendor.login');
-
+Route::get('vendor/logout',[VendorController::class,'logout'])->name('vendor.logout');
 Route::middleware('auth:vendor')->group(function () {
     Route::get('vendor/dashboard',[DashboardController::class,'index'])->name('vendor.dashboard');
     Route::resource('vendor/product', VendorProductController::class, ['as'=>'vendor']);
