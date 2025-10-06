@@ -16,6 +16,10 @@ use  App\Http\Controllers\Vendor\VendorController;
 use App\Http\Controllers\Vendor\DashboardController;
 use App\Http\Controllers\Vendor\VendorProductController;
 use App\Http\Controllers\Vendor\VendorOrderController;
+// customer
+use App\Http\Controllers\Customer\CustomerAuthController;
+use App\Http\Controllers\Customer\CustomerDashboardController;
+use App\Http\Controllers\Customer\CustomerOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,3 +83,19 @@ Route::middleware('auth:vendor')->group(function () {
     Route::resource('vendor/product', VendorProductController::class, ['as'=>'vendor']);
     Route::resource('vendor/order', VendororderController::class, ['as'=>'vendor']);
 });
+
+  // Customer Authentication Routes
+    Route::prefix('customer_panel')->group(function () {
+        Route::get('login', [CustomerAuthController::class, 'showLoginForm'])->name('customer.login');
+        Route::post('login', [CustomerAuthController::class, 'login'])->name('customer.login.submit');
+        Route::get('register', [CustomerAuthController::class, 'showRegistrationForm'])->name('customer.register');
+        Route::post('register', [CustomerAuthController::class, 'register'])->name('customer.register.submit');
+        Route::post('logout', [CustomerAuthController::class, 'logout'])->name('customer.logout');
+
+        // Protected customer routes
+        Route::middleware('auth:customer')->group(function () {
+            Route::get('dashboard', [CustomerDashboardController::class, 'index'])->name('customer_panel.dashboard');
+            Route:: resource('order',CustomerOrderController::class, ['as' => 'customer_panel']);
+            
+        });
+        });

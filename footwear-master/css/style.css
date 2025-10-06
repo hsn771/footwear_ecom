@@ -8844,3 +8844,21 @@ input[type="text"] {
 
 .js .animate-box {
   opacity: 0; }
+
+  .header-top {
+    background: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    padding: 6px 0;
+    font-size: 14px;
+}
+
+.header-top a {
+    color: #333;
+    text-decoration: none;
+}
+
+.header-top .top-menu .dropdown-menu {
+    min-width: 150px;
+    padding: 5px 0;
+}
+

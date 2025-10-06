@@ -47,17 +47,16 @@
     <div class="container">
         <div class="row align-items-center">
             <!-- Left -->
-            <div class="col-md-4 col-4">
+            <div class="col-md-6 col-6">
                 <div class="header-left">
                     <a href="tel:#"><i class="icon-phone"></i> Call: +0123 456 789</a>
                 </div>
             </div>
 
             <!-- Right -->
-            <div class="col-md-8 col-8 text-md-right text-left">
+            <div class="col-md-6 col-6 text-md-right text-left">
                 <div class="header-right">
                     <ul class="top-menu list-inline mb-0">
-                        <!-- Currency -->
                         <li class="list-inline-item dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">USD</a>
                             <ul class="dropdown-menu">
@@ -66,7 +65,6 @@
                             </ul>
                         </li>
 
-                        <!-- Language -->
                         <li class="list-inline-item dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">English</a>
                             <ul class="dropdown-menu">
@@ -76,39 +74,25 @@
                             </ul>
                         </li>
 
-                        <!-- Auth Links -->
-                        @guest('customer')
-                            <li class="list-inline-item">
-                                <a class="nav-link" href="{{ route('customer.login') }}">Login</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="nav-link" href="{{ route('customer.register') }}">Register</a>
-                            </li>
-                        @else
-                            <li class="list-inline-item dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    {{ Auth::guard('customer')->user()->name }}
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('customer_panel.dashboard') }}">Dashboard</a>
-                                    </li>
-                                    <li>
-                                        <form method="POST" action="{{ route('customer.logout') }}">
-                                            @csrf
-                                            <button type="submit" class="dropdown-item">Logout</button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
+                        <li class="list-inline-item dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                {{ Auth::guard('customer')->user()->name }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('customer_panel.dashboard') }}">Dashboard</a></li>
+                                <li>
+                                    <form method="POST" action="{{ route('customer.logout') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 </div>
 
 
