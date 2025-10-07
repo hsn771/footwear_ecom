@@ -39,6 +39,7 @@
 	@stack('styles')
 
 	</head>
+	
 	<body>
 
 	<div class="colorlib-loader"></div>

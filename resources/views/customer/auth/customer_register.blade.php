@@ -1,93 +1,117 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Customer Registration</div>
-                <div class="card-body">
+<div id="colorlib-contact">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="contact-wrap p-4 p-md-5 shadow-sm rounded bg-white">
+                    <h3 class="mb-4 text-center" style="font-weight:600;">Customer Registration</h3>
+                    <p class="text-center text-muted mb-4">
+                        Create your account to start shopping with us.
+                    </p>
+
                     <form method="POST" action="{{ route('customer.register.submit') }}">
                         @csrf
-                        <div class="form-group row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+
+                        <!-- Name -->
+                        <div class="form-group mb-3">
+                            <label for="name" class="form-label fw-semibold">Full Name</label>
+                            <input id="name" type="text"
+                                   class="form-control @error('name') is-invalid @enderror"
+                                   name="name" value="{{ old('name') }}" required autofocus
+                                   placeholder="Enter your name">
+                            @error('name')
+                                <div class="invalid-feedback d-block"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
-                        <div class="form-group row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+
+                        <!-- Email -->
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label fw-semibold">Email Address</label>
+                            <input id="email" type="email"
+                                   class="form-control @error('email') is-invalid @enderror"
+                                   name="email" value="{{ old('email') }}" required
+                                   placeholder="Enter your email">
+                            @error('email')
+                                <div class="invalid-feedback d-block"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
-                         <div class="form-group row mb-3">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">Phone</label>
-                            <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
-                                @error('phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+
+                        <!-- Phone -->
+                        <div class="form-group mb-3">
+                            <label for="phone" class="form-label fw-semibold">Phone</label>
+                            <input id="phone" type="text"
+                                   class="form-control @error('phone') is-invalid @enderror"
+                                   name="phone" value="{{ old('phone') }}" required
+                                   placeholder="Enter your phone number">
+                            @error('phone')
+                                <div class="invalid-feedback d-block"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
-                        <div class="form-group row mb-3">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
-                            <div class="col-md-6">
-                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
-                                @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+
+                        <!-- Address -->
+                        <div class="form-group mb-3">
+                            <label for="address" class="form-label fw-semibold">Address</label>
+                            <input id="address" type="text"
+                                   class="form-control @error('address') is-invalid @enderror"
+                                   name="address" value="{{ old('address') }}" required
+                                   placeholder="Enter your address">
+                            @error('address')
+                                <div class="invalid-feedback d-block"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
-                         <div class="form-group row mb-3">
-                            <label for="city" class="col-md-4 col-form-label text-md-right">District</label>
-                            <div class="col-md-6">
-                                <select name="district" class="form-select form-control" id="district">
-                                    <option selected>Select your district</option>
-                                    @foreach($districts as $district)
-                                        <option class="dist dist{{$district->division_id}}" value="{{ $district->id }}">{{ $district->name }}</option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('district'))
-                                    <span class="text-danger"> {{ $errors->first('district') }}</span>
-                                @endif
-                            </div>
+
+                        <!-- District -->
+                        <div class="form-group mb-3">
+                            <label for="district" class="form-label fw-semibold">District</label>
+                            <select name="district" class="form-select form-control" id="district" required>
+                                <option selected disabled>Select your district</option>
+                                @foreach($districts as $district)
+                                    <option class="dist dist{{ $district->division_id }}"
+                                            value="{{ $district->id }}">{{ $district->name }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('district'))
+                                <span class="text-danger"> {{ $errors->first('district') }}</span>
+                            @endif
                         </div>
-                        <div class="form-group row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                            <div class="col-md-6">
-                                <input id="password" type="text" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+
+                        <!-- Password -->
+                        <div class="form-group mb-3">
+                            <label for="password" class="form-label fw-semibold">Password</label>
+                            <input id="password" type="password"
+                                   class="form-control @error('password') is-invalid @enderror"
+                                   name="password" required placeholder="Enter your password">
+                            @error('password')
+                                <div class="invalid-feedback d-block"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
-                        <div class="form-group row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="text" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
+
+                        <!-- Confirm Password -->
+                        <div class="form-group mb-4">
+                            <label for="password-confirm" class="form-label fw-semibold">Confirm Password</label>
+                            <input id="password-confirm" type="password"
+                                   class="form-control" name="password_confirmation" required
+                                   placeholder="Confirm your password">
                         </div>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">Register</button>
-                            </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary px-5 py-2"
+                                    style="border-radius: 50px; font-weight: 600;">
+                                Register
+                            </button>
+                        </div>
+
+                        <!-- Login Link -->
+                        <div class="text-center mt-3">
+                            <p class="mb-0">
+                                Already have an account?
+                                <a href="{{ route('customer.login') }}" class="text-primary fw-semibold">
+                                    Login Here
+                                </a>
+                            </p>
                         </div>
                     </form>
                 </div>
@@ -95,18 +119,46 @@
         </div>
     </div>
 </div>
+
+<style>
+    #colorlib-contact {
+        background-color: #f8f9fa;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .contact-wrap {
+        border-top: 4px solid #88c8bc;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .contact-wrap:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+        background: #88c8bc;
+        border-color: #88c8bc;
+    }
+
+    .btn-primary:hover {
+        background: #6fb0a5;
+        border-color: #6fb0a5;
+    }
+
+    label {
+        color: #444;
+    }
+</style>
 @endsection
+
 @push('scripts')
 <script>
-
     function fetchDistricts(divisionId) {
-        // Hide all districts
-        document.querySelectorAll('.dist').forEach(function(el) {
-            el.style.display = 'none';
-        });
-        // Show districts that belong to the selected division
-        document.querySelectorAll('.dist' + divisionId).forEach(function(el) {
-            el.style.display = 'block';
-        });
+        document.querySelectorAll('.dist').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.dist' + divisionId).forEach(el => el.style.display = 'block');
     }
+</script>
 @endpush
