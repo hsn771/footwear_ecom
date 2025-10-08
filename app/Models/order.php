@@ -20,7 +20,8 @@ class order extends Model
     }
     public function customer()
     {
-        return $this->belongsTo(Customer::class,'user_id');
+        // return $this->belongsTo(Customer::class,'user_id');
+        return $this->belongsTo(Customer::class);
     }
     public function coupon()
     {

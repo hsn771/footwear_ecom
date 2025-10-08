@@ -117,29 +117,10 @@
 						<div class="col-sm-12 text-left menu-1">
 							<ul>
 								<li class="active"><a href="{{ route('welcome') }}">Home</a></li>
-								<li class="has-dropdown">
-									<a href="#">Categories</a>
-									<ul class="dropdown">
-										<li><a href="{{ route('man') }}">Man</a></li>
-										<li><a href="cart.html">Woman</a></li>
-										<li><a href="checkout.html">Kids</a></li>
-									</ul>
-								</li>
-								<li class="has-dropdown">
-									<a href="#">Shops</a>
-									<ul class="dropdown">
-										@forelse(App\Models\Vendor::get() as $vendor)
-										<li><a href="{{ route('shop', $vendor->id) }}">{{$vendor->store_name}}</a></li>
-										@empty
-											
-										@endforelse
-									</ul>
-								</li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="{{ route('customer_panel.order.index') }}">Orders</a></li>
 								<li class="cart"><a href="{{route('cart.view')}}"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
 								<li class="cart"><a href=""><i class="icon-heart"></i> Wishlist [0]</a></li>
-								<li class="cart"><a href="{{route('vendor.register')}}">Vendor Register</a></li>
+								
 							</ul>
 						</div>
 					</div>
