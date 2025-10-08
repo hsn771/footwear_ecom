@@ -14,7 +14,7 @@ class CustomerOrderController extends Controller
     public function index()
     {
         $customer_id= auth()->guard('customer')->id();
-        $data=order::where('customer_id',$customer_id)->get();
+        $data=order::where('user_id',$customer_id)->get();
         return view('customer.order.index', compact('data'));
     }
 
