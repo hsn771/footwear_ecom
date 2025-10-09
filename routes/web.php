@@ -52,6 +52,7 @@ Route::post('cart/add',[CartController::class,'addToCart'])->name('cart.add');
 Route::post('cart/update',[CartController::class,'updateCart'])->name('cart.update');
 Route::get('cart/remove/{id}',[CartController::class,'removeFromCart'])->name('cart.remove');
 Route::post('cart/check_coupon',[CartController::class,'checkCoupon'])->name('cart.check_coupon');
+Route::get('cart/count', [CartController::class, 'count'])->name('cart.count');
 Route::get('checkout',[CheckoutController::class,'checkout'])->name('checkout');
 Route::post('checkout/place_order',[CheckoutController::class,'placeOrder'])->name('checkout.place_order');
 
@@ -97,9 +98,10 @@ Route::middleware('auth:vendor')->group(function () {
         Route::middleware('auth:customer')->group(function () {
             Route::get('dashboard', [CustomerDashboardController::class, 'index'])->name('customer_panel.dashboard');
             Route:: resource('order',CustomerOrderController::class, ['as' => 'customer_panel']);
-            Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
-            Route::post('/wishlist/add', [WishlistController::class, 'store'])->name('wishlist.add');
-            Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.remove');
+            Route::get('wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+            Route::post('wishlist/add', [WishlistController::class, 'store'])->name('wishlist.add');
+            Route::delete('wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.remove');
+            Route::get('wishlist/count', [WishlistController::class, 'count'])->name('wishlist.count');
 
             
         });

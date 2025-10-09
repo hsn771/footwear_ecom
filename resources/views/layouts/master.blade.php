@@ -154,8 +154,23 @@
 								</li>
 								<li><a href="about.html">About</a></li>
 								<li><a href="contact.html">Contact</a></li>
-								<li class="cart"><a href="{{route('cart.view')}}"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
-								<li class="cart"><a href="{{ route('wishlist.index') }}"><i class="icon-heart"></i> Wishlist [0]</a></li>
+								@php
+									$cartCount = count(session('cart', []));
+									$wishlistCount = auth()->check() 
+													? \App\Models\Wishlist::where('user_id', auth()->id())->count() 
+													: 0;
+								@endphp
+
+								<li class="cart">
+									<a href="{{ route('cart.view') }}">
+										<i class="icon-shopping-cart"></i> Cart [{{ $cartCount }}]
+									</a>
+								</li>
+								<li class="cart">
+									<a href="{{ route('wishlist.index') }}">
+										<i class="icon-heart"></i> Wishlist [{{ $wishlistCount }}]
+									</a>
+								</li>
 								<li class="cart"><a href="{{route('vendor.register')}}">Vendor Register</a></li>
 							</ul>
 						</div>
@@ -321,6 +336,56 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="{{asset ('assets/js/main.js') }}"></script>
 
 	@stack('scripts')
+	<script>
+		function addToCart(productId) {
+			fetch("{{ route('cart.add') }}", {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+				},
+				body: JSON.stringify({ product_id: productId })
+			})
+			.then(res => res.json())
+			.then(data => {
+				alert(data.message);
+				// Update cart count
+				fetchCartCount();
+			});
+		}
+
+		function fetchCartCount() {
+			fetch("{{ route('cart.count') }}")
+			.then(res => res.json())
+			.then(data => {
+				document.querySelector('.icon-shopping-cart').nextSibling.textContent = ` Cart [${data.count}]`;
+			});
+		}
+		function removeFromWishlist(wishlistId) {
+			fetch(`/wishlist/${wishlistId}`, {
+				method: 'DELETE',
+				headers: {
+					'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+					'Accept': 'application/json'
+				}
+			})
+			.then(res => res.json())
+			.then(data => {
+				alert(data.message);
+				document.querySelector(`#wishlist-item-${wishlistId}`).remove();
+				fetchWishlistCount();
+			});
+		}
+
+		function fetchWishlistCount() {
+			fetch("{{ route('wishlist.count') }}")
+			.then(res => res.json())
+			.then(data => {
+				document.querySelector('.icon-heart').nextSibling.textContent = ` Wishlist [${data.count}]`;
+			});
+		}
+
+	</script>
 
 	</body>
 </html>
