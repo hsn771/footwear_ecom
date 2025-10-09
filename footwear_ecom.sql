@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2025 at 09:02 AM
+-- Generation Time: Oct 09, 2025 at 06:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -103,7 +103,7 @@ CREATE TABLE `coupons` (
 --
 
 INSERT INTO `coupons` (`id`, `code`, `discount_type`, `discount_value`, `usage_limit`, `used_count`, `min_order_amount`, `start_date`, `end_date`, `is_active`, `created_at`, `updated_at`) VALUES
-(1, 'RP20', 2, 50.00, 2, NULL, 1.00, '2025-09-23', '2025-09-26', 1, '2025-09-23 23:10:38', '2025-09-23 23:10:38');
+(1, 'RP20', 2, 50.00, 2, NULL, 1.00, '2025-09-23', '2025-10-07', 1, '2025-09-23 23:10:38', '2025-09-23 23:10:38');
 
 -- --------------------------------------------------------
 
@@ -129,7 +129,11 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `phone`, `address`, `division_id`, `district_id`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'Hasan', 'hasan@gmail.com', '014', '2 no gate', 1, 8, NULL, '2025-09-26 21:54:38', '2025-09-26 21:54:38');
+(1, 'Hasan', 'hasan@gmail.com', '014', '2 no gate', 1, 8, NULL, '2025-09-26 21:54:38', '2025-09-26 21:54:38'),
+(2, 'kaies', 'kaies@gmail.com', '014', '2 no gate', NULL, 8, '$2y$12$re0UNHrTNRj0yxMBp96jquGpHWU2STCCJCRh65Q/dJvxNn2C1dr2i', '2025-10-06 00:33:12', '2025-10-06 00:33:12'),
+(3, 'akib', 'akib@gmail.com', '014', '2 no gate', NULL, 8, '$2y$12$xTPof8BKL.EorVXgWNqHLeoK.6cVK2NA8T39hy3z2UGOw6BukxWdO', '2025-10-06 00:36:42', '2025-10-06 00:36:42'),
+(4, 'Tanvir', 'tanvir@gmail.com', '014', '2 no gate', NULL, 8, '$2y$12$a5YL5AEoIyfSKwKtW9G50OASlI.EsN1DyJnrNF3Gna91adyonzDbS', '2025-10-06 00:43:17', '2025-10-06 00:43:17'),
+(5, 'Raihan', 'raihan11@gmail.com', '0162', 'Halishahar', NULL, 8, '$2y$12$8euVnR74THsEREuHY7iX5Olo4FEyeSOvv4DaFyd0E5845gXkBP8oy', '2025-10-08 00:18:38', '2025-10-08 00:18:38');
 
 -- --------------------------------------------------------
 
@@ -327,7 +331,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (28, '2025_09_24_040622_create_coupons_table', 4),
 (29, '2025_09_24_042329_create_customers_table', 4),
 (30, '2025_09_24_043452_add_columns_to_orders_table', 4),
-(31, '2025_09_24_044540_add_columns_to_order_items_table', 5);
+(31, '2025_09_24_044540_add_columns_to_order_items_table', 5),
+(32, '2025_10_05_044310_add_status_in_order_items', 6),
+(33, '2025_10_08_042817_add_new_columns_to_orders_table', 7);
 
 -- --------------------------------------------------------
 
@@ -337,6 +343,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_id` bigint(20) UNSIGNED DEFAULT NULL,
   `coupon_id` bigint(20) UNSIGNED DEFAULT NULL,
   `total_price` decimal(10,2) NOT NULL,
   `final_price` decimal(10,2) NOT NULL,
@@ -355,10 +362,14 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `coupon_id`, `total_price`, `final_price`, `district_id`, `division_id`, `notes`, `address`, `user_id`, `discount_amount`, `status`, `created_at`, `updated_at`) VALUES
-(3, NULL, 46000.00, 46000.00, 8, 1, 'ergherge', '2 no gate', 1, 0.00, 'pending', '2025-09-26 21:56:57', '2025-09-26 21:56:57'),
-(4, NULL, 26000.00, 26000.00, 8, 1, 'erbedrvge', '2 no gate', 1, 0.00, 'pending', '2025-09-28 00:05:33', '2025-09-28 00:05:33'),
-(5, NULL, 76000.00, 76000.00, 2, 1, 'fdd', '2 no gate', 1, 0.00, 'pending', '2025-09-28 00:54:01', '2025-09-28 00:54:01');
+INSERT INTO `orders` (`id`, `customer_id`, `coupon_id`, `total_price`, `final_price`, `district_id`, `division_id`, `notes`, `address`, `user_id`, `discount_amount`, `status`, `created_at`, `updated_at`) VALUES
+(3, NULL, NULL, 46000.00, 46000.00, 8, 1, 'ergherge', '2 no gate', 1, 0.00, 'pending', '2025-09-26 21:56:57', '2025-09-26 21:56:57'),
+(4, NULL, NULL, 26000.00, 26000.00, 8, 1, 'erbedrvge', '2 no gate', 1, 0.00, 'pending', '2025-09-28 00:05:33', '2025-09-28 00:05:33'),
+(5, NULL, NULL, 76000.00, 76000.00, 2, 1, 'fdd', '2 no gate', 1, 0.00, 'pending', '2025-09-28 00:54:01', '2025-09-28 00:54:01'),
+(6, NULL, 1, 69500.00, 69450.00, 8, 1, 'Please deliver as soon as possible.', 'Kolpolok Abashik', 1, 50.00, 'pending', '2025-10-04 23:37:19', '2025-10-04 23:37:19'),
+(7, 0, NULL, 26000.00, 26000.00, 8, 1, 'edfgvfv', '2 no gate', 1, 0.00, 'pending', '2025-10-07 22:53:07', '2025-10-07 22:53:07'),
+(8, NULL, NULL, 20000.00, 20000.00, 8, 1, 'Please send this as soon as possible.', 'Agrabad', 5, 0.00, 'delivered', '2025-10-08 00:19:44', '2025-10-08 21:33:10'),
+(9, NULL, NULL, 23000.00, 23000.00, 8, 1, 'rfgrv', '2 no gate', 5, 0.00, 'delivered', '2025-10-08 22:55:07', '2025-10-08 22:55:30');
 
 -- --------------------------------------------------------
 
@@ -377,21 +388,28 @@ CREATE TABLE `order_items` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `vendor_id` int(11) DEFAULT NULL,
   `unit_price` varchar(255) DEFAULT NULL,
-  `line_total` varchar(255) DEFAULT NULL
+  `line_total` varchar(255) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 0 COMMENT '0 pending 1 delivered, 2 cancel'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order_items`
 --
 
-INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `size_id`, `quantity`, `price`, `created_at`, `updated_at`, `vendor_id`, `unit_price`, `line_total`) VALUES
-(1, 3, 8, NULL, 1, 26000.00, '2025-09-26 21:56:57', '2025-09-26 21:56:57', NULL, NULL, '26000'),
-(2, 3, 9, NULL, 1, 20000.00, '2025-09-26 21:56:57', '2025-09-26 21:56:57', 1, NULL, '20000'),
-(3, 4, 8, NULL, 1, 26000.00, '2025-09-28 00:05:33', '2025-09-28 00:05:33', NULL, NULL, '26000'),
-(4, 5, 8, NULL, 1, 26000.00, '2025-09-28 00:54:01', '2025-09-28 00:54:01', NULL, NULL, '26000'),
-(5, 5, 9, NULL, 1, 20000.00, '2025-09-28 00:54:01', '2025-09-28 00:54:01', 1, NULL, '20000'),
-(6, 5, 10, NULL, 1, 23000.00, '2025-09-28 00:54:02', '2025-09-28 00:54:02', NULL, NULL, '23000'),
-(7, 5, 11, NULL, 1, 7000.00, '2025-09-28 00:54:02', '2025-09-28 00:54:02', NULL, NULL, '7000');
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `size_id`, `quantity`, `price`, `created_at`, `updated_at`, `vendor_id`, `unit_price`, `line_total`, `status`) VALUES
+(1, 3, 8, NULL, 1, 26000.00, '2025-09-26 21:56:57', '2025-09-26 21:56:57', NULL, NULL, '26000', 0),
+(2, 3, 9, NULL, 1, 20000.00, '2025-09-26 21:56:57', '2025-09-26 21:56:57', 1, NULL, '20000', 0),
+(3, 4, 8, NULL, 1, 26000.00, '2025-09-28 00:05:33', '2025-09-28 00:05:33', NULL, NULL, '26000', 0),
+(4, 5, 8, NULL, 1, 26000.00, '2025-09-28 00:54:01', '2025-09-28 00:54:01', NULL, NULL, '26000', 0),
+(5, 5, 9, NULL, 1, 20000.00, '2025-09-28 00:54:01', '2025-09-28 00:54:01', 1, NULL, '20000', 0),
+(6, 5, 10, NULL, 1, 23000.00, '2025-09-28 00:54:02', '2025-09-28 00:54:02', NULL, NULL, '23000', 0),
+(7, 5, 11, NULL, 1, 7000.00, '2025-09-28 00:54:02', '2025-09-28 00:54:02', NULL, NULL, '7000', 0),
+(8, 6, 18, NULL, 2, 20000.00, '2025-10-04 23:37:19', '2025-10-04 23:37:19', 5, NULL, '40000', 0),
+(9, 6, 19, NULL, 1, 15000.00, '2025-10-04 23:37:19', '2025-10-04 23:37:19', 5, NULL, '15000', 0),
+(10, 6, 20, NULL, 1, 14500.00, '2025-10-04 23:37:19', '2025-10-05 00:15:48', 5, NULL, '14500', 1),
+(11, 7, 8, NULL, 1, 26000.00, '2025-10-07 22:53:07', '2025-10-07 22:53:07', NULL, NULL, '26000', 0),
+(12, 8, 9, NULL, 1, 20000.00, '2025-10-08 00:19:44', '2025-10-08 00:19:44', 1, NULL, '20000', 0),
+(13, 9, 10, NULL, 1, 23000.00, '2025-10-08 22:55:07', '2025-10-08 22:55:07', NULL, NULL, '23000', 0);
 
 -- --------------------------------------------------------
 
@@ -501,7 +519,12 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `category_id`, `im
 (14, 'Nike GP Challenge Pro Premium', 'Men\'s Hard Court Tennis Shoes', 10000.00, 4, '1759030162.avif', '2025-09-27 21:29:22', '2025-09-27 21:29:22', NULL),
 (15, 'Air Jordan 4 Retro \'Worn Blue\'', 'Denim and gold. We\'re celebrating two iconic wardrobe staples with this AJ4 Retro. All the details you love are there too, from the eyestays to the visible air.', 19000.00, 4, '1759030211.avif', '2025-09-27 21:30:11', '2025-09-27 21:30:11', NULL),
 (16, 'HUSH PUPPIES', 'HUSH PUPPIES SEVENTY EIGHT MENS HP CLOSED SNEAKER', 9000.00, 5, '1759032481.webp', '2025-09-27 22:08:01', '2025-09-27 22:08:01', 1),
-(17, 'HUSH PUPPIES SEVENTY EIGHT MENS HP CLOSED SNEAKER', 'Say hello to retro with Hush Puppies’ 1978 classic runner that’s making a 2025 comeback: the comfy Seventy8 leather sneaker. This ’70s style, of running shoe, is crafted...', 6700.00, 3, '1759036545.webp', '2025-09-27 23:15:45', '2025-09-27 23:15:45', 3);
+(17, 'HUSH PUPPIES SEVENTY EIGHT MENS HP CLOSED SNEAKER', 'Say hello to retro with Hush Puppies’ 1978 classic runner that’s making a 2025 comeback: the comfy Seventy8 leather sneaker. This ’70s style, of running shoe, is crafted...', 6700.00, 3, '1759036545.webp', '2025-09-27 23:15:45', '2025-09-27 23:15:45', 3),
+(18, 'Nike Air Max Plus G x Eastside Golf', 'Nike and Eastside Golf\'s “Take Flight” collection symbolizes golf and community rising higher together, breaking new boundaries and setting new standards for what the sport can be. The Air Max Plus G x Eastside Golf features a spikeless integrated traction that performs just as well on the course as it does in the city. The iconic TPU cage spells out \"Eastside Golf\" while logo on the tongue label adds a special nod.', 20000.00, 4, '1759558627.avif', '2025-10-04 00:17:07', '2025-10-04 00:17:07', 5),
+(19, 'Nike Victory Tour 4 x Eastside Golf', 'The Victory Tour 4 x Eastside Golf is designed for the course and inspired by the sky. The premium fabric finish offers a subtle sky glare effect, while the blue chrome accents on the Swoosh logos and sole reflect the stratosphere. The spiked sole, with its carbon plate is engineered for optimal green-grass performance, offering stability and signature Nike x Eastside Golf style on the course. Eastside Golf is a lifestyle brand—whether you play the game or not. This collaboration was created to redefine how golf connects with fashion and everyday life.', 15000.00, 4, '1759558668.avif', '2025-10-04 00:17:48', '2025-10-04 00:17:48', 5),
+(20, 'Ja 3 By You', 'We essentially handed the controls to Ja and let him go off in terms of the Ja 3’s design. The result? A viral game-changer. The Ja 3 By You puts the spotlight on your own creativity. Mix and match the left and right shoes if you so choose. Then, go crazy with bling Swoosh logos, glow-in-the-dark outsole options and a Ja-approved color palette. Who wants the sticks?', 14500.00, 4, '1759558724.avif', '2025-10-04 00:18:44', '2025-10-04 00:18:44', 5),
+(21, 'LeBron XXIII \"Miami Twice\"', 'LeBron’s carried the game for two decades. But what if we could help lighten the load? Enter the LeBron XXIII. It offers peak lightweight responsiveness thanks to springy, full-length ZoomX foam—perfect for the high speed demands of the modern game. This special design salutes his second ring and the indelible title run moments that are forever commemorated in King history.', 25000.00, 4, '1759558767.avif', '2025-10-04 00:19:27', '2025-10-04 00:19:27', 5),
+(22, 'A\'One \"dyNASTY\"', 'All that glitters is gold when you’ve grinded and gritted for championship glory. And A’ja? You know she’ll do what’s required for a trophy—or two—or more. This special dyNASTY design celebrates her reign that’s been built when greatness meets grit. Warm neutrals honor the elegance of the moment. Gold hits celebrate every win.', 11500.00, 4, '1759558819.avif', '2025-10-04 00:20:19', '2025-10-04 00:20:19', 5);
 
 -- --------------------------------------------------------
 
@@ -5734,7 +5757,8 @@ CREATE TABLE `vendors` (
 INSERT INTO `vendors` (`id`, `owner_name`, `owner_contact`, `store_name`, `store_contact`, `email`, `district_id`, `division_id`, `address`, `username`, `password`, `created_at`, `updated_at`) VALUES
 (1, 'jamal', NULL, 'jamal', '015', 'hr492785@gmail.com', 1, 1, NULL, 'jamal', '$2y$12$EpXOWQmgxCTDarHU34mEVORpwuP/eSBmc3Muhvf6iRwnsvv9VBmU6', '2025-09-27 00:03:46', '2025-09-27 00:03:46'),
 (3, 'Kaies', NULL, 'Adidas', '015', 'kaies@gmail.com', 8, 1, 'chittagong', 'Adidas', '$2y$12$pU7jyWd86JYsGGGs8JuUY..h0dFrLpIr0O068pkTjAHK6x.lrb9h.', '2025-09-27 23:14:37', '2025-09-27 23:14:37'),
-(4, 'Kaies', NULL, 'Bata', '015', 'admin@example.com', 3, 1, 'ctg', 'Bata', '$2y$12$l4E731XVxyTAIarGLt8I3OeVVMb2HSYLxG5EAyHb8VqGaKKPkotNC', '2025-09-28 00:55:28', '2025-09-28 00:55:28');
+(4, 'Kaies', NULL, 'Bata', '015', 'admin@example.com', 3, 1, 'ctg', 'Bata', '$2y$12$l4E731XVxyTAIarGLt8I3OeVVMb2HSYLxG5EAyHb8VqGaKKPkotNC', '2025-09-28 00:55:28', '2025-09-28 00:55:28'),
+(5, 'Hasan', NULL, 'Nike', '015', 'hasan@gmail.com', 8, 1, 'ctg', 'Nike', '$2y$12$DS2vIphbprLub1BY33cTT.VA8r3eZQ/viOJdLz8XBLWzWRtqJiAsu', '2025-10-03 22:18:46', '2025-10-03 22:18:46');
 
 -- --------------------------------------------------------
 
@@ -5749,6 +5773,16 @@ CREATE TABLE `wishlists` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `wishlists`
+--
+
+INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(1, 5, 8, '2025-10-08 22:03:16', '2025-10-08 22:03:16'),
+(2, 5, 9, '2025-10-08 22:47:18', '2025-10-08 22:47:18'),
+(3, 5, 10, '2025-10-08 22:47:20', '2025-10-08 22:47:20'),
+(4, 5, 11, '2025-10-08 22:54:16', '2025-10-08 22:54:16');
 
 --
 -- Indexes for dumped tables
@@ -5965,7 +5999,7 @@ ALTER TABLE `coupons`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `discounts`
@@ -5995,19 +6029,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `order_returns`
@@ -6031,7 +6065,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `product_size_stocks`
@@ -6085,13 +6119,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vendors`
 --
 ALTER TABLE `vendors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

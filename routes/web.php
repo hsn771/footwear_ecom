@@ -20,6 +20,7 @@ use App\Http\Controllers\Vendor\VendorOrderController;
 use App\Http\Controllers\Customer\CustomerAuthController;
 use App\Http\Controllers\Customer\CustomerDashboardController;
 use App\Http\Controllers\Customer\CustomerOrderController;
+use App\Http\Controllers\Customer\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,6 +97,10 @@ Route::middleware('auth:vendor')->group(function () {
         Route::middleware('auth:customer')->group(function () {
             Route::get('dashboard', [CustomerDashboardController::class, 'index'])->name('customer_panel.dashboard');
             Route:: resource('order',CustomerOrderController::class, ['as' => 'customer_panel']);
+            Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+            Route::post('/wishlist/add', [WishlistController::class, 'store'])->name('wishlist.add');
+            Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.remove');
+
             
         });
         });

@@ -155,7 +155,7 @@
 								<li><a href="about.html">About</a></li>
 								<li><a href="contact.html">Contact</a></li>
 								<li class="cart"><a href="{{route('cart.view')}}"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
-								<li class="cart"><a href=""><i class="icon-heart"></i> Wishlist [0]</a></li>
+								<li class="cart"><a href="{{ route('wishlist.index') }}"><i class="icon-heart"></i> Wishlist [0]</a></li>
 								<li class="cart"><a href="{{route('vendor.register')}}">Vendor Register</a></li>
 							</ul>
 						</div>

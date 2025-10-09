@@ -119,7 +119,7 @@
 								<li class="active"><a href="{{ route('welcome') }}">Home</a></li>
 								<li><a href="{{ route('customer_panel.order.index') }}">Orders</a></li>
 								<li class="cart"><a href="{{route('cart.view')}}"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
-								<li class="cart"><a href=""><i class="icon-heart"></i> Wishlist [0]</a></li>
+								<li class="cart"><a href="{{ route('wishlist.index') }}"><i class="icon-heart"></i> Wishlist [0]</a></li>
 								
 							</ul>
 						</div>

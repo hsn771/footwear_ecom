@@ -111,6 +111,10 @@
 									<p>{{$product->description}}</p>
 									<span class="price">BDT{{$product->price}}</span>
 									<a href="javascript:void(0)" onclick="addToCart({{$product->id}})" class="btn btn-dark rounded-pill py-2 px-4 m-2">Add to Cart <i class="fa fa-cart-plus ms-2"></i></a>
+									<a href="javascript:void(0)" onclick="addToWishlist({{$product->id}})" class="btn btn-outline-danger rounded-pill py-2 px-4">
+    									<i class="fa fa-heart"></i> Add to Wishlist
+									</a>
+
 								</div>
 							</div>
 						</div>
@@ -152,4 +156,24 @@
 
         }
     </script>
+	<script>
+		function addToWishlist(productId) {
+			fetch("{{ route('wishlist.add') }}", {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+				},
+				body: JSON.stringify({ product_id: productId })
+			})
+			.then(res => res.json())
+			.then(data => {
+				alert(data.message);
+			})
+			.catch(() => {
+				alert('Something went wrong.');
+			});
+		}
+	</script>
+
 @endpush

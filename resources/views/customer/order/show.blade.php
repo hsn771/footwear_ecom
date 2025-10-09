@@ -1,6 +1,6 @@
 @extends('layouts.customer')
 
-@section('title', 'Order Invoice #SL=' . $order->id)
+@section('title', 'Order Invoice No=' . $order->id)
 
 @push('styles')
 <style>
@@ -151,7 +151,7 @@
 <div class="container">
     <div class="invoice-container">
         <div class="invoice-header">
-            <h2>Invoice #SL={{ $order->id }}</h2>
+            <h2>Invoice No={{ $order->id }}</h2>
             <p>Thank you for shopping with us 💚</p>
         </div>
 
