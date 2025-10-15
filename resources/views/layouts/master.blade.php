@@ -76,14 +76,19 @@
                                 <li><a class="dropdown-item" href="#">Spanish</a></li>
                             </ul>
                         </li>
+						
+						<li class="list-inline-item">
+                                <a class="nav-link" href="{{route('vendor.register')}}">BECOME A SELLER?</a>
+                        </li>
+					
 
                         <!-- Auth Links -->
                         @guest('customer')
                             <li class="list-inline-item">
-                                <a class="nav-link" href="{{ route('customer.login') }}">Login</a>
+                                <a class="nav-link" href="{{ route('customer.login') }}">LOGIN</a>
                             </li>
                             <li class="list-inline-item">
-                                <a class="nav-link" href="{{ route('customer.register') }}">Register</a>
+                                <a class="nav-link" href="{{ route('customer.register') }}">REGISTER</a>
                             </li>
                         @else
                             <li class="list-inline-item dropdown">
@@ -171,7 +176,7 @@
 										<i class="icon-heart"></i> Wishlist [{{ $wishlistCount }}]
 									</a>
 								</li>
-								<li class="cart"><a href="{{route('vendor.register')}}">Vendor Register</a></li>
+								<!-- <li class="cart"><a href="{{route('vendor.register')}}">Vendor Register</a></li> -->
 							</ul>
 						</div>
 					</div>

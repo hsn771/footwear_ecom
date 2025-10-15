@@ -24,4 +24,5 @@ class FrontendController extends Controller
         $vendors =\App\Models\Vendor::findOrFail($id);
         return view('shop', compact('vendors'));
     }
+    
 }
