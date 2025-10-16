@@ -43,6 +43,9 @@ use App\Http\Controllers\Customer\WishlistController;
 
 Route::get('/',[front::class,'welcome'])->name ('welcome');
 Route::get('man',[front::class,'man'])->name ('man');
+Route::get('woman',[front::class,'woman'])->name ('woman');
+Route::get('about',[front::class,'about'])->name ('about');
+Route::get('contact',[front::class,'contact'])->name ('contact');
 Route::get('/shop/{id}', [front::class, 'shop'])->name('shop');
 Route::get('productdescription/{id}',[front::class,'productdescription'])->name ('productdescription');
 
@@ -100,7 +103,7 @@ Route::middleware('auth:vendor')->group(function () {
             Route:: resource('order',CustomerOrderController::class, ['as' => 'customer_panel']);
             Route::get('wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
             Route::post('wishlist/add', [WishlistController::class, 'store'])->name('wishlist.add');
-            Route::delete('wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.remove');
+            Route::delete('wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
             Route::get('wishlist/count', [WishlistController::class, 'count'])->name('wishlist.count');
 
             

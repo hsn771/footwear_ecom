@@ -58,15 +58,6 @@
             <div class="col-md-8 col-8 text-md-right text-left">
                 <div class="header-right">
                     <ul class="top-menu list-inline mb-0">
-                        <!-- Currency -->
-                        <li class="list-inline-item dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">USD</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">EUR</a></li>
-                                <li><a class="dropdown-item" href="#">USD</a></li>
-                            </ul>
-                        </li>
-
                         <!-- Language -->
                         <li class="list-inline-item dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">English</a>
@@ -143,7 +134,7 @@
 									<a href="#">Categories</a>
 									<ul class="dropdown">
 										<li><a href="{{ route('man') }}">Man</a></li>
-										<li><a href="cart.html">Woman</a></li>
+										<li><a href="{{ route('woman') }}">Woman</a></li>
 										<li><a href="checkout.html">Kids</a></li>
 									</ul>
 								</li>
@@ -157,8 +148,8 @@
 										@endforelse
 									</ul>
 								</li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="{{ route('about') }}">About</a></li>
+								<li><a href="{{ route('contact') }}">Contact</a></li>
 								@php
 									$cartCount = count(session('cart', []));
 									$wishlistCount = auth()->check() 
